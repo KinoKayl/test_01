@@ -103,7 +103,7 @@ class DatabaseHelper {
       'description': 'Интересная книга для ума и души.',
       'imageUrl': 'assets/images/book.png',
       'cardText': 'Наслаждайся чтением!',
-      'userId': null, // Или ID конкретного пользователя
+      'userId': 2, // Или ID конкретного пользователя
     });
 
     await db.insert('gifts', {
@@ -111,7 +111,7 @@ class DatabaseHelper {
       'description': 'Портативная колонка для любимой музыки.',
       'imageUrl': 'assets/images/speaker.png',
       'cardText': 'Лови ритм!',
-      'userId': null,
+      'userId': 2,
     });
 
     await db.insert('gifts', {
@@ -119,7 +119,7 @@ class DatabaseHelper {
       'description': 'Лучший подарок для любителей игр.',
       'imageUrl': 'assets/images/game_console.png',
       'cardText': 'Играй и побеждай!',
-      'userId': null,
+      'userId': 2,
     });
 
     await db.insert('gifts', {
@@ -127,7 +127,7 @@ class DatabaseHelper {
       'description': 'Цифровая камера для запечатления особенных моментов.',
       'imageUrl': 'assets/images/camera.png',
       'cardText': 'Запечатли воспоминания!',
-      'userId': null,
+      'userId': 2,
     });
 
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../database_helper.dart';
 import '../models.dart';
+import '../widgets/avatar_picker.dart';
+import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
   String selectedRole = 'user'; // Default role
+  String avatarPath = "";
 
   void register() async {
     final username = usernameController.text.trim();
@@ -48,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
       password: password,
       fullName: fullName,
       role: selectedRole,
-      avatarPath: '', // Default empty avatar path
+      avatarPath: avatarPath, // Default empty avatar path
     );
 
     await db.createUser(newUser);
@@ -67,6 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            AvatarPicker(onAvatarSelected: (path) => avatarPath = path),
             TextField(
               controller: usernameController,
               decoration: InputDecoration(labelText: 'Логин'),

@@ -48,6 +48,15 @@ class DatabaseHelper {
         FOREIGN KEY (userId) REFERENCES users (id)
       )
     ''');
+
+    // Insert default admin user
+    await db.insert('users', {
+      'username': 'Admin',
+      'password': '11111', // Consider hashing the password in production.
+      'fullName': 'Administrator Administrator',
+      'role': 'admin',
+      'avatarPath': '', // Default empty avatar
+    });
   }
 
   // Добавление пользователя

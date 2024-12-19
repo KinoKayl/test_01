@@ -89,6 +89,15 @@ class DatabaseHelper {
     return await db.insert('gifts', gift.toMap());
   }
 
+  Future<List<Gift>> getAllGifts() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('gifts');
+
+    return maps.map((map) => Gift.fromMap(map)).toList();
+  }
+
+
+
   // Получение подарков по ID пользователя
   Future<List<Gift>> getGiftsByUserId(int userId) async {
     final db = await instance.database;

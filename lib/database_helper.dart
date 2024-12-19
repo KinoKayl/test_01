@@ -57,6 +57,79 @@ class DatabaseHelper {
       'role': 'admin',
       'avatarPath': '', // Default empty avatar
     });
+
+    await db.insert('gifts', {
+      'name': 'Медвежонок',
+      'description': 'Милый плюшевый медвежонок для ваших близких.',
+      'imageUrl': 'assets/images/teddy_bear.png',
+      'cardText': 'Обними меня!',
+      'userId': 2, // Или ID конкретного пользователя
+    });
+
+    await db.insert('gifts', {
+      'name': 'Коробка конфет',
+      'description': 'Вкуснейшие ассорти конфет.',
+      'imageUrl': 'assets/images/chocolate_box.png',
+      'cardText': 'Сладкие моменты!',
+      'userId': 2,
+    });
+
+    await db.insert('gifts', {
+      'name': 'Букет цветов',
+      'description': 'Красивый букет свежих цветов.',
+      'imageUrl': 'assets/images/flower_bouquet.png',
+      'cardText': 'Для особенного дня!',
+      'userId': 2,
+    });
+
+    await db.insert('gifts', {
+      'name': 'Наручные часы',
+      'description': 'Элегантные наручные часы с кожаным ремешком.',
+      'imageUrl': 'assets/images/wrist_watch.png',
+      'cardText': 'Бесценные мгновения!',
+      'userId': 2,
+    });
+
+    await db.insert('gifts', {
+      'name': 'Парфюм',
+      'description': 'Роскошный аромат, чтобы оставить неизгладимое впечатление.',
+      'imageUrl': 'assets/images/perfume.png',
+      'cardText': 'Пахни восхитительно!',
+      'userId': 2,
+    });
+
+    await db.insert('gifts', {
+      'name': 'Книга',
+      'description': 'Интересная книга для ума и души.',
+      'imageUrl': 'assets/images/book.png',
+      'cardText': 'Наслаждайся чтением!',
+      'userId': null, // Или ID конкретного пользователя
+    });
+
+    await db.insert('gifts', {
+      'name': 'Музыкальная колонка',
+      'description': 'Портативная колонка для любимой музыки.',
+      'imageUrl': 'assets/images/speaker.png',
+      'cardText': 'Лови ритм!',
+      'userId': null,
+    });
+
+    await db.insert('gifts', {
+      'name': 'Игровая консоль',
+      'description': 'Лучший подарок для любителей игр.',
+      'imageUrl': 'assets/images/game_console.png',
+      'cardText': 'Играй и побеждай!',
+      'userId': null,
+    });
+
+    await db.insert('gifts', {
+      'name': 'Фотоаппарат',
+      'description': 'Цифровая камера для запечатления особенных моментов.',
+      'imageUrl': 'assets/images/camera.png',
+      'cardText': 'Запечатли воспоминания!',
+      'userId': null,
+    });
+
   }
 
   // Добавление пользователя
@@ -105,7 +178,15 @@ class DatabaseHelper {
     return maps.map((map) => Gift.fromMap(map)).toList();
   }
 
-
+  Future<void> updateGiftUser(int giftId, int userId) async {
+    final db = await database;
+    await db.update(
+      'gifts',
+      {'userId': userId},
+      where: 'id = ?',
+      whereArgs: [giftId],
+    );
+  }
 
   // Получение подарков по ID пользователя
   Future<List<Gift>> getGiftsByUserId(int userId) async {
